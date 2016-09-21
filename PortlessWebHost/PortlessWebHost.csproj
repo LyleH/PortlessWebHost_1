@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29E947E5-2C54-456D-B788-9F9B162AEC32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PortlessWebHost</RootNamespace>
+    <AssemblyName>PortlessWebHost.Unmerged</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppDomainCallbackExtensions">
+      <HintPath>..\packages\AppDomainCallbackExtensions.1.0.3\lib\net40\AppDomainCallbackExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="BCMakeCert">
+      <HintPath>..\packages\FiddlerCore.4.4.8.4\lib\net40\BCMakeCert.dll</HintPath>
+    </Reference>
+    <Reference Include="CertMaker">
+      <HintPath>..\packages\FiddlerCore.4.4.8.4\lib\net40\CertMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="FiddlerCore4">
+      <HintPath>..\packages\FiddlerCore.4.4.8.4\lib\net40\FiddlerCore4.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="TextSerialization">
+      <HintPath>..\packages\TextSerialization.1.0.0\lib\net45\TextSerialization.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Internal\PortlessHttpContext.cs" />
+    <Compile Include="Internal\PortlessHttpHeaders.cs" />
+    <Compile Include="Internal\PortlessHttpResponse.cs" />
+    <Compile Include="Internal\PortlessModule.cs" />
+    <Compile Include="Internal\PortlessRequest.cs" />
+    <Compile Include="Internal\SocketShutdownLockFactory.cs" />
+    <Compile Include="PortlessWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PortlessWebRequest.cs" />
+    <Compile Include="PortlessWebResponse.cs" />
+    <Compile Include="Internal\CassiniWebHost.cs" />
+    <Compile Include="Internal\CompletedAsyncResult.cs" />
+    <Compile Include="Internal\IWebHost.cs" />
+    <Compile Include="Internal\InternalWebHost.cs" />
+    <Compile Include="Internal\PortlessHttpServer.cs" />
+    <Compile Include="Protocol.cs" />
+    <Compile Include="WebHost.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PortlessWebHost.CassiniDev\PortlessWebHost.CassiniDev.csproj">
+      <Project>{90d5c1c1-4aaa-49fe-82bf-2e12ea0011ef}</Project>
+      <Name>PortlessWebHost.CassiniDev</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Exec Command="&quot;$(ProjectDir)..\packages\ilmerge.2.13.0307\ILMerge.exe&quot; /internalize /out:&quot;$(TargetDir)PortlessWebHost.dll&quot; &quot;$(TargetDir)PortlessWebHost.Unmerged.dll&quot; &quot;$(TargetDir)PortlessWebHost.CassiniDev.dll&quot;" />
+  </Target>
+</Project>
